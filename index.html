@@ -219,7 +219,7 @@
 			/* border-radius: 48px; */
 		}
 
-		#main:focus-within>*,
+		/* #main:focus-within>*, */
 		#main.selection-within>* {
 			/* width: 0; */
 			height: 0;
@@ -407,6 +407,7 @@
 	} */
 	</style>
 	<script>
+		let brks_elem = null;
 		function sethash(hash) {
 			if (hash == 'welcome' || hash == "") {
 				if (history.replaceState) {
@@ -434,12 +435,15 @@
 		}
 		function doblur(force = false) {
 			console.log(force)
+			if (document.querySelector('#main:focus-within')) return
 			if (mousein || force) {
 				sethash('')
 				document.activeElement.blur()
 				let elem = document.querySelector('.app-selected')
 				if (elem) {
 					elem.classList.remove('app-selected')
+					if (elem == brks_elem)
+						document.querySelector('body').classList.remove('keepshowing')
 					elem.blur()
 					document.querySelector('#main').classList.remove('selection-within')
 				}
@@ -462,6 +466,7 @@
 				<p>Press <code>tab</code> or <code>shift+tab</code> to move forward/backward.</p>
 				<p class="blurcompatibility">For a fancy blur effect, open this site in a Chromium-based browser, such
 					as Edge or Chrome.</p>
+				<p>You can click on the underlined titles of projects to see them live.</p>
 				<!-- <h2>See my...</h2>
 				<ul>
 					<li>
@@ -480,8 +485,17 @@
 			<img alt="" src="4hfair.svg" class="icon">
 			<h2 class="applabel">4-H Fair</h2>
 			<div class="content">
-				<h1>Somerset County 4-H Fair</h1>
-				<p>The 4-H fair app for Somerset County is a web app written in Gatsby.</p>
+				<h1><a href="https://sc4hfair.vercel.app" onfocus="event.preventDefault()">Somerset County 4-H Fair</a>
+				</h1>
+				<p>The 4-H Fair App for the Somerset County 4-H is a web app written in Gatsby. The app allows users to:
+				</p>
+				<ul>
+					<li>See updates about the fair</li>
+					<li>View a fair map with their live location</li>
+					<li>See upcoming events</li>
+					<li>Keep a list of clubs they are interested in</li>
+				</ul>
+				<p>The app will likely be used in the summer of 2022, since the 2021 fair has been cancelled.</p>
 			</div>
 		</div>
 		<div id="codetools" class="app" style="background-image: url(codetoolshome.png);" tabindex="0" tabindex="0"
@@ -490,10 +504,11 @@
 			<img alt="" src="CodeToolsLogo.svg" class="icon">
 			<h2 class="applabel">CodeTools</h2>
 			<div class="content">
-				<h1>CodeTools</h1>
-				<p>CodeTools is a project (still in progress) that will allow for quick and easy coding challenges in a
-					browser. It will be used as a resource for my APCS class, so only the Java programming language will
-					be supported. Check back later for more updates on this project.</p>
+				<h1><a href="https://codetools.cy2.me/">CodeTools</a></h1>
+				<p>CodeTools is a website that allows for quick and easy coding challenges in a
+					browser. It also provides a way to easily Java functions. It will be used as a resource for my APCSA
+					class, so only the Java programming language will
+					be supported.</p>
 			</div>
 		</div>
 		<div id="projects" class="app" style="background-image: url(RainbowLaptop.jpg);" tabindex="0"
@@ -502,7 +517,35 @@
 			<img alt="" src="construction-white-18dp.svg" style="padding: 6px; box-sizing: border-box;" class="icon">
 			<h2 class="applabel">All Projects</h2>
 			<div class="content">
-				<h1>My Projects</h1>
+				<h1>More Projects</h1>
+				<h2><a href="https://browse.cy2.me">Cy2 Browse</a></h2>
+				<p>An in-browser proxy for easily accessing blocked websites, or accessing sites from a different IP.
+					Runs on replit, so it might have to wake up before it works properly. Only proxies GET requests, so
+					your mileage may vary.</p>
+				<h2><a href="https://playtools.cy2.me">PlayTools</a></h2>
+				<p>Playtools is an app that allows you to put YouTube videos in a container, which prompts users for
+					their name, so that you can track who viewed your video, for how long, and how many times.</p>
+				<h2><a href="https://hx.cy2.me">HX</a></h2>
+				<p>A collection of random HTML experiments.</p>
+				<h2><a href="https://4hcomputers.club">4H Computers</a></h2>
+				<p>4H Computers is my 4H club, part of the Somerset County 4-H. This is our website, where you can also
+					find a link to our wiki we set up a little while back. </p>
+				<h2><a href="https://oracle.cy2.me">The Oracle</a></h2>
+				A random message from the oracle. Just for you. Reload for more, or GET <a
+					href="https://oracle.cy2.me/api">oracle.cy2.me/api</a> for an unformatted version you can use in
+				your apps.
+				<h2><a href="https://readybelu.ga">ReadyBeluga</a></h2>
+				<p>One of my first projects, written in Python Flask. A simple URL shortener that lets you choose your
+					own custom path. This site is on a timer though... freenom...</p>
+				<h2><a href="https://connect4.cy2.me">Connect 4</a></h2>
+				<p>My first project with WebSockets. A simple Connect 4 game that's really easy to hack.</p>
+				<h2><a href="https://cycloudd.tk">CyCloud</a></h2>
+				<p>A NextCloud server I set up for myself and my family.</p>
+				<h1>Projects I Contributed To</h1>
+				<h2><a href="https://emotes.ml">emotes.ml</a></h2>
+				<p>I made the homepage</p>
+				<h2><a href="https://blackjack-apcs.vercel.app">APCS Final Project</a></h2>
+				<p>My 2021 APCS final project, that I worked on with a friend.</p>
 			</div>
 		</div>
 		<h1>More</h1>
@@ -513,7 +556,12 @@
 			<h2 class="applabel">About Me</h2>
 			<div class="content">
 				<h1>About</h1>
-				<p></p>
+				<p>Hi, I'm Cy, a class of 2023 student at Ridge High School in New Jersey. I like web development, as
+					well as software development and engineering in general. The projects on this page are only my web
+					projects, but I have done many more, involving hardware. Interested in working with me? Email me at
+					<a href="mailto:cyfinfaza@gmail.com">cyfinfaza@gmail.com</a> or contat me on Telegram <a
+						href="https://t.me/cyfinfaza">@cyfinfaza</a>.
+				</p>
 			</div>
 		</div>
 		<div id="testimonials" class="app" style="background-image: url(chandelier.jpg);" tabindex="0"
@@ -557,7 +605,8 @@
 		if (elem) {
 			document.querySelector('body').classList.add('keepshowing')
 			dofocus(elem)
-			elem.addEventListener('blur', () => document.querySelector('body').classList.remove('keepshowing'))
+			brks_elem = elem;
+			// elem.addEventListener('change', () => document.querySelector('body').classList.remove('keepshowing'))
 		}
 	}
 	else {
