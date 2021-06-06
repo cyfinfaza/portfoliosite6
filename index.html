@@ -323,7 +323,8 @@
 				right: 24px;
 			}
 
-			.keepshowing .app:not(#welcome):focus .content {
+			.keepshowing .app:not(#welcome):focus .content,
+			.keepshowing .app-selected:not(#welcome) .content {
 				/* height: calc(100vh - 80px) !important; */
 				padding-top: 158px;
 				/* margin-top: 80px; */
@@ -424,7 +425,10 @@
 			}
 		}
 		function dofocus(elem, dohash = true) {
+			elem.focus()
 			if (dohash) sethash(elem.id)
+			let clearElem = document.querySelector('.app-selected')
+			if (clearElem) clearElem.classList.remove('app-selected')
 			elem.classList.add('app-selected')
 			document.querySelector('#main').classList.add('selection-within')
 		}
@@ -436,6 +440,7 @@
 				let elem = document.querySelector('.app-selected')
 				if (elem) {
 					elem.classList.remove('app-selected')
+					elem.blur()
 					document.querySelector('#main').classList.remove('selection-within')
 				}
 			}
@@ -445,8 +450,8 @@
 
 <body onkeydown="if(event.key==='Escape') doblur(true)">
 	<div id="main" class="selection-within" onfocusout="doblur()">
-		<div id="welcome" class="app app-selected" style="background-image: url(tree.jpg);" autofocus
-			onfocus="dofocus(this)" tabindex="0">
+		<div id="welcome" class="app app-selected" style="background-image: url(tree.jpg);" onfocus="dofocus(this)"
+			tabindex="0">
 			<div class="darkener"></div>
 			<img alt="" src="c_general.svg" class="icon">
 			<h2 class="applabel">Cy's Portfolio</h2>
@@ -525,7 +530,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="escaper" onclick="document.activeElement.blur()">
+	<div class="escaper" onclick="doblur()">
 		esc
 	</div>
 	<p style="font-size: 10px; position: fixed; right: 12px; bottom: 12px; text-align: right; margin: 0; z-index: 70;">
@@ -547,13 +552,16 @@
 	// debugger
 	if (window.location.hash != "") {
 		console.log('doing it')
-		document.querySelector('#welcome').classlist.remove('app-selected')
+		document.querySelector('#welcome').classList.remove('app-selected')
 		var elem = document.querySelector(window.location.hash)
 		if (elem) {
 			document.querySelector('body').classList.add('keepshowing')
 			dofocus(elem)
 			elem.addEventListener('blur', () => document.querySelector('body').classList.remove('keepshowing'))
 		}
+	}
+	else {
+		document.querySelector('#welcome').focus()
 	}
 </script>
 
