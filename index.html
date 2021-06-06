@@ -432,6 +432,9 @@
 			if (clearElem) clearElem.classList.remove('app-selected')
 			elem.classList.add('app-selected')
 			document.querySelector('#main').classList.add('selection-within')
+			if (elem.id == 'welcome') {
+				document.querySelector('body').classList.remove('keepshowing')
+			}
 		}
 		function doblur(force = false) {
 			console.log(force)
