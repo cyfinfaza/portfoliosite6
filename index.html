@@ -406,6 +406,7 @@
 	</style>
 	<script>
 		function sethash(hash) {
+			if (hash == 'welcome') hash = ''
 			if (history.replaceState) {
 				history.replaceState(null, null, '#' + hash);
 			}
@@ -436,8 +437,8 @@
 
 <body onkeydown="if(event.key==='Escape') doblur(true)">
 	<div id="main" class="selection-within" onfocusout="doblur()">
-		<div id="welcome" class="app app-selected" style="background-image: url(tree.jpg);" onfocus="dofocus(this)"
-			tabindex="0">
+		<div id="welcome" class="app app-selected" style="background-image: url(tree.jpg);" autofocus
+			onfocus="dofocus(this)" tabindex="0">
 			<div class="darkener"></div>
 			<img alt="" src="c_general.svg" class="icon">
 			<h2 class="applabel">Cy's Portfolio</h2>
