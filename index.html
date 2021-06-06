@@ -7,6 +7,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" /> -->
 	<title>Cy</title>
 	<meta name="description" content="Cy's Portfolio">
 	<meta property="og:title" content="Cy">
@@ -406,7 +407,15 @@
 	</style>
 	<script>
 		function sethash(hash) {
-			if (hash == 'welcome') hash = ''
+			if (hash == 'welcome' || hash == "") {
+				if (history.replaceState) {
+					history.replaceState(null, null, ' ');
+				}
+				else {
+					location.hash = '';
+				}
+				return
+			}
 			if (history.replaceState) {
 				history.replaceState(null, null, '#' + hash);
 			}
@@ -426,7 +435,6 @@
 				document.activeElement.blur()
 				let elem = document.querySelector('.app-selected')
 				if (elem) {
-					console.log('found')
 					elem.classList.remove('app-selected')
 					document.querySelector('#main').classList.remove('selection-within')
 				}
