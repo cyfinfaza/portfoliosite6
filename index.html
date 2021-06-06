@@ -435,7 +435,7 @@
 		}
 		function doblur(force = false) {
 			console.log(force)
-			if (document.querySelector('#main:focus-within')) return
+			if (document.querySelector('#main:focus-within') && !force) return
 			if (mousein || force) {
 				sethash('')
 				document.activeElement.blur()
