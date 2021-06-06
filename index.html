@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color: black">
+<!-- <html lang="en" style="background-image: url(20200828_211155.jpg); background-size: cover; background-position: center"> -->
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<title>Cy</title>
+	<meta name="description" content="Cy's Portfolio">
+	<meta property="og:title" content="Cy">
+	<meta property="og:site_name" content="Cy's Portfolio">
+	<meta property="og:description"
+		content="Hi, I'm Cy. This is my portfolio site, where you can find my projects, and read about me and people who I have worked with.">
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=DM+Mono&family=DM+Sans:wght@400;500;700&display=swap');
+
+		body {
+			font-family: 'DM Sans', sans-serif;
+			line-height: 1.5;
+			/* border: 1px transparent; */
+			box-sizing: border-box;
+			position: fixed;
+			top: 0;
+			left: 0;
+			margin: 0;
+			height: 100vh;
+			width: 100vw;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			overflow: hidden;
+			transition: 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
+		}
+
+		code {
+			font-family: 'DM Mono', monospace;
+			padding: 2px;
+			padding-inline: 6px;
+			background-color: #0002;
+			border-radius: 4px;
+		}
+
+		* {
+			-webkit-tap-highlight-color: transparent;
+			color: white;
+		}
+
+		*:focus {
+			outline: none;
+		}
+
+		::-webkit-scrollbar {
+			width: 10px;
+		}
+
+		::-webkit-scrollbar-track {
+			background-color: #FFF2;
+		}
+
+		::-webkit-scrollbar-thumb {
+			background-color: #FFF8;
+		}
+
+		#main {
+			/* pointer-events: none; */
+			transition: 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
+			/* transition-delay: 10s; */
+			max-height: 100%;
+			margin: 0;
+			padding: 24px;
+			box-sizing: border-box;
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			overflow-y: auto;
+			/* justify-content: center; */
+			flex-shrink: 0;
+		}
+
+		.escaper {
+			background-color: #4448;
+			/* border: 2px solid white; */
+			width: 50px;
+			height: 50px;
+			border-radius: 25%;
+			z-index: 100;
+			position: absolute;
+			top: 24px;
+			right: 24px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-weight: normal;
+			cursor: pointer;
+			user-select: none;
+			transition: 500ms;
+			opacity: 0;
+			pointer-events: none;
+			transform: scale(0.5);
+			transition: 240ms ease;
+			-webkit-backdrop-filter: blur(32px) brightness(120%);
+			backdrop-filter: blur(32px) brightness(120%);
+			box-sizing: border-box;
+			border: 3px solid #0008;
+		}
+
+		.escaper:hover {
+			border: 3px solid white;
+			box-shadow: inset 0px 0px 6px 0px white;
+			/* transform: scale(1.1) !important; */
+		}
+
+		#main>* {
+			/* transition: 400ms cubic-bezier(0.26, 0.8, 0.29, 0.98); */
+			transition: 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
+			flex-shrink: 0;
+			overflow: hidden;
+			text-align: center;
+		}
+
+		#main>*>* {
+			text-align: left;
+		}
+
+		.app {
+			width: 256px;
+			height: 64px;
+			border-radius: 32px;
+			background-size: cover;
+			background-position: center;
+			margin: 8px;
+			position: relative;
+			pointer-events: all;
+			overflow: hidden;
+			display: flex;
+			align-items: center;
+			z-index: 60;
+		}
+
+		.app * {
+			transition: 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
+		}
+
+		.app *:not(.content *) {
+			position: absolute;
+		}
+
+		.app>.icon {
+			/* transition: none; */
+			position: absolute;
+			top: 0;
+			left: 0;
+			/* transform: translateX(-50%) translateY(-50%); */
+			margin: 0;
+			z-index: 50;
+			width: 56px;
+			height: 56px;
+			margin: 4px;
+			/* background-color: black;
+		border-top-right-radius: 50%;
+		border-bottom-right-radius: 50%; */
+		}
+
+		.darkener {
+			width: 100%;
+			height: 100%;
+			z-index: 30;
+			background-color: #111B;
+			background-size: cover;
+			background-position: center;
+			position: absolute;
+		}
+
+		.content {
+			z-index: 20;
+			background-color: #0008;
+			/* width: 50%;
+		height: 100%; */
+			width: 400px;
+			height: 600px;
+			box-sizing: border-box;
+			padding: 25px;
+			padding-top: 86px;
+			opacity: 0;
+			align-self: flex-start;
+			overflow-y: auto;
+			position: absolute;
+			top: 0;
+			left: 0;
+			background-color: #222222DD
+		}
+
+		@supports (backdrop-filter: blur(24px)) or (-webkit-backdrop-filter: blur(24px)) {
+			.content {
+				-webkit-backdrop-filter: blur(32px) brightness(120%);
+				backdrop-filter: blur(32px) brightness(120%);
+				background-color: #1f1f1f73;
+			}
+
+			.blurcompatibility {
+				display: none;
+			}
+		}
+
+		.applabel {
+			margin: 0;
+			margin-left: 72px;
+			z-index: 40;
+		}
+
+		.app:hover:not(.app:focus, .app-selected) {
+			/* transform: scale(1.2); */
+			width: 300px;
+			/* height: 96px; */
+			/* border-radius: 48px; */
+		}
+
+		#main:focus-within>*,
+		#main.selection-within>* {
+			/* width: 0; */
+			height: 0;
+			margin: 0;
+			opacity: 0;
+		}
+
+		.keepshowing #welcome {
+			height: 64px;
+			margin: 8px;
+			opacity: 1;
+		}
+
+		#main:focus-within~.escaper,
+		#main.selection-within~.escaper {
+			opacity: 1;
+			pointer-events: all;
+			transform: scale(1);
+		}
+
+		#main:focus-within,
+		#main.selection-within {
+			padding: 0;
+		}
+
+		.app:active:not(.app:focus, .app-selected) {
+			filter: brightness(2);
+		}
+
+		.app:focus,
+		.app-selected {
+			width: 800px !important;
+			height: 600px !important;
+			border-radius: 16px;
+			margin: 0 !important;
+			opacity: 1 !important;
+			/* width: 100vw !important;
+		height: 100vh !important;
+		border-radius: 0px; */
+		}
+
+		.app:focus>.icon,
+		.app-selected>.icon {
+			top: 24px;
+			left: 24px;
+			transform: none;
+			width: 64px !important;
+			height: 64px !important;
+			border-radius: 50%;
+			background-color: #0E0E0EBB;
+			margin: 0 !important;
+		}
+
+		.app:focus>.darkener,
+		.app-selected>.darkener {
+			opacity: 0;
+		}
+
+		.app:focus>.content,
+		.app-selected>.content {
+			opacity: 1;
+			z-index: 35;
+		}
+
+		.app:focus>.applabel,
+		.app-selected>.applabel {
+			opacity: 0;
+			user-select: none;
+		}
+
+		.app:not(.app:focus, .app-selected) {
+			cursor: pointer;
+		}
+
+		@media screen and (max-width: 800px),
+		(max-height: 680px) {
+
+			.app:focus,
+			.app-selected {
+				width: 100vw !important;
+				height: 100vh !important;
+				border-radius: 0px;
+			}
+
+			.keepshowing #welcome {
+				width: calc(100% - 32px);
+				margin: 0;
+				position: fixed;
+				left: 16px;
+				top: 16px;
+				z-index: 70;
+				/* border-radius: 4px; */
+			}
+
+			.keepshowing .app:not(#welcome) .icon {
+				margin-top: 78px !important;
+			}
+
+			.keepshowing .escaper {
+				top: 104px;
+				right: 24px;
+			}
+
+			.keepshowing .app:not(#welcome):focus .content {
+				/* height: calc(100vh - 80px) !important; */
+				padding-top: 158px;
+				/* margin-top: 80px; */
+				box-sizing: border-box;
+			}
+
+			.content {
+				width: 50vw;
+				height: 100vh;
+			}
+		}
+
+		@media screen and (max-width: 600px) {
+			.content {
+				height: unset;
+				max-height: 75%;
+				width: 100%;
+			}
+
+			body {
+				align-items: flex-start !important;
+				box-sizing: border-box;
+			}
+
+			#main {
+				padding-block: calc((100vw - 256px)/2);
+				box-sizing: border-box;
+			}
+		}
+
+		@media (pointer:none),
+		(pointer:coarse) {
+			::-webkit-scrollbar {
+				all: unset;
+				width: 0;
+			}
+
+			::-webkit-scrollbar-track {
+				all: unset;
+			}
+
+			::-webkit-scrollbar-thumb {
+				all: unset;
+			}
+		}
+
+		.testimonial {
+			width: 100%;
+			margin-bottom: 16px;
+		}
+
+		.testimonial>* {
+			/* text-align: center; */
+			width: 100%;
+		}
+
+		.testimonial q {
+			font-weight: bold;
+			font-style: italic;
+		}
+
+		.testimonial p {
+			opacity: 0.75;
+			font-size: smaller;
+			margin-top: 6px;
+			margin-bottom: 0;
+		}
+
+		/*
+		.testimonial:first-child {
+			font-style: italic;
+		}
+
+		.testimonial:nth-child(2) {
+			font-weight: bold;
+		} */
+
+		/* #main>h1 {
+		margin: 8px;
+	} */
+	</style>
+	<script>
+		function sethash(hash) {
+			if (history.replaceState) {
+				history.replaceState(null, null, '#' + hash);
+			}
+			else {
+				location.hash = '#' + hash;
+			}
+		}
+		function dofocus(elem, dohash = true) {
+			if (dohash) sethash(elem.id)
+			elem.classList.add('app-selected')
+			document.querySelector('#main').classList.add('selection-within')
+		}
+		function doblur(force = false) {
+			console.log(force)
+			if (mousein || force) {
+				sethash('')
+				document.activeElement.blur()
+				let elem = document.querySelector('.app-selected')
+				if (elem) {
+					console.log('found')
+					elem.classList.remove('app-selected')
+					document.querySelector('#main').classList.remove('selection-within')
+				}
+			}
+		}
+	</script>
+</head>
+
+<body onkeydown="if(event.key==='Escape') doblur(true)">
+	<div id="main" class="selection-within" onfocusout="doblur()">
+		<div id="welcome" class="app app-selected" style="background-image: url(tree.jpg);" onfocus="dofocus(this)"
+			tabindex="0">
+			<div class="darkener"></div>
+			<img alt="" src="c_general.svg" class="icon">
+			<h2 class="applabel">Cy's Portfolio</h2>
+			<div class="content">
+				<h1>Hi, I'm Cy.</h1>
+				<p>And this is my landing page. It's nice to meet you.</p>
+				<p>Press or tap <code>esc</code> to see my projects.</p>
+				<p>Press <code>tab</code> or <code>shift+tab</code> to move forward/backward.</p>
+				<p class="blurcompatibility">For a fancy blur effect, open this site in a Chromium-based browser, such
+					as Edge or Chrome.</p>
+				<!-- <h2>See my...</h2>
+				<ul>
+					<li>
+						<a>Blog (coming soon!)</a>
+					</li>
+					<li>
+						<a href="https://www.youtube.com/channel/UCY7wuuS5KHP8HUwBpv5Hn2A/videos">YouTube</a>
+					</li>
+				</ul> -->
+			</div>
+		</div>
+		<h1>Featured Projects</h1>
+		<div id="sc4hfair" class="app" style="background-image: url(fair-map.jpg);" tabindex="0" tabindex="0"
+			onfocus="dofocus(this)">
+			<div class="darkener"></div>
+			<img alt="" src="4hfair.svg" class="icon">
+			<h2 class="applabel">4-H Fair</h2>
+			<div class="content">
+				<h1>Somerset County 4-H Fair</h1>
+				<p>The 4-H fair app for Somerset County is a web app written in Gatsby.</p>
+			</div>
+		</div>
+		<div id="codetools" class="app" style="background-image: url(codetoolshome.png);" tabindex="0" tabindex="0"
+			onfocus="dofocus(this)">
+			<div class="darkener"></div>
+			<img alt="" src="CodeToolsLogo.svg" class="icon">
+			<h2 class="applabel">CodeTools</h2>
+			<div class="content">
+				<h1>CodeTools</h1>
+				<p>CodeTools is a project (still in progress) that will allow for quick and easy coding challenges in a
+					browser. It will be used as a resource for my APCS class, so only the Java programming language will
+					be supported. Check back later for more updates on this project.</p>
+			</div>
+		</div>
+		<div id="projects" class="app" style="background-image: url(RainbowLaptop.jpg);" tabindex="0"
+			onfocus="dofocus(this)" tabindex="0">
+			<div class="darkener"></div>
+			<img alt="" src="construction-white-18dp.svg" style="padding: 6px; box-sizing: border-box;" class="icon">
+			<h2 class="applabel">All Projects</h2>
+			<div class="content">
+				<h1>My Projects</h1>
+			</div>
+		</div>
+		<h1>More</h1>
+		<div id="about" class="app" style="background-image: url(stone-wall.JPG);" tabindex="0" onfocus="dofocus(this)"
+			tabindex="0">
+			<div class="darkener"></div>
+			<img alt="" src="account_circle-white-18dp.svg" class="icon">
+			<h2 class="applabel">About Me</h2>
+			<div class="content">
+				<h1>About</h1>
+				<p></p>
+			</div>
+		</div>
+		<div id="testimonials" class="app" style="background-image: url(chandelier.jpg);" tabindex="0"
+			onfocus="dofocus(this)" tabindex="0">
+			<div class="darkener"></div>
+			<img alt="" src="format_quote-white-18dp.svg" class="icon">
+			<h2 class="applabel">Testimonials</h2>
+			<div class="content">
+				<h1>Testimonials</h1>
+				<div class="testimonial">
+					<q>This site lacks testimonials. Please contact me if you have any.</q>
+					<p>- Cy Westbrook, student of Ridge High School</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="escaper" onclick="document.activeElement.blur()">
+		esc
+	</div>
+	<p style="font-size: 10px; position: fixed; right: 12px; bottom: 12px; text-align: right; margin: 0; z-index: 70;">
+		&copy;2021 Cy
+		Westbrook<br><a style="color: white;" href="credits.html">Credits</a></p>
+	<!-- <p
+		style="position: fixed; bottom: 16px; padding-inline: 8px; padding-block: 2px; background-color: black; border-radius: 6px;">
+		Cy's
+		Portfolio 2021</p> -->
+</body>
+<script>
+	let mousein = true;
+	document.body.onmouseleave = () => {
+		mousein = false;
+	}
+	document.body.onmouseenter = () => {
+		mousein = true;
+	}
+	// debugger
+	if (window.location.hash != "") {
+		console.log('doing it')
+		document.querySelector('#welcome').classlist.remove('app-selected')
+		var elem = document.querySelector(window.location.hash)
+		if (elem) {
+			document.querySelector('body').classList.add('keepshowing')
+			dofocus(elem)
+			elem.addEventListener('blur', () => document.querySelector('body').classList.remove('keepshowing'))
+		}
+	}
+</script>
+
+</html>
