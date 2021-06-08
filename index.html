@@ -9,7 +9,8 @@
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" /> -->
 	<title>Cy</title>
-	<meta name="description" content="Cy's Portfolio">
+	<meta name="description"
+		content="Hi, I'm Cy. This is my portfolio site, where you can find my projects, and read about me and people who I have worked with.">
 	<meta property="og:title" content="Cy">
 	<meta property="og:site_name" content="Cy's Portfolio">
 	<meta property="og:description"
@@ -32,7 +33,9 @@
 			align-items: center;
 			justify-content: center;
 			overflow: hidden;
-			transition: 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
+			--main-transition: 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
+			/* --main-transition: 500ms cubic-bezier(0.8, 0.02, 0.18, 1); */
+			transition: var(--main-transition);
 		}
 
 		code {
@@ -66,7 +69,7 @@
 
 		#main {
 			/* pointer-events: none; */
-			transition: 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
+			transition: var(--main-transition);
 			/* transition-delay: 10s; */
 			max-height: 100%;
 			margin: 0;
@@ -79,6 +82,8 @@
 			overflow-y: auto;
 			/* justify-content: center; */
 			flex-shrink: 0;
+			/* min-height: 100vh;
+			justify-content: center; */
 		}
 
 		.escaper {
@@ -116,7 +121,7 @@
 
 		#main>* {
 			/* transition: 400ms cubic-bezier(0.26, 0.8, 0.29, 0.98); */
-			transition: 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
+			transition: var(--main-transition);
 			flex-shrink: 0;
 			overflow: hidden;
 			text-align: center;
@@ -142,7 +147,7 @@
 		}
 
 		.app * {
-			transition: 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
+			transition: var(--main-transition);
 		}
 
 		.app *:not(.content *) {
