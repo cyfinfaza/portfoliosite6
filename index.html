@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" style="background-color: black">
-<!-- <html lang="en" style="background-image: url(20200828_211155.jpg); background-size: cover; background-position: center"> -->
 
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" /> -->
 	<title>Cy</title>
 	<meta name="description"
 		content="Hi, I'm Cy. This is my portfolio site, where you can find my projects, and read about me and people who I have worked with.">
@@ -21,7 +19,6 @@
 		body {
 			font-family: 'DM Sans', sans-serif;
 			line-height: 1.5;
-			/* border: 1px transparent; */
 			box-sizing: border-box;
 			position: fixed;
 			top: 0;
@@ -34,7 +31,6 @@
 			justify-content: center;
 			overflow: hidden;
 			--main-transition: 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
-			/* --main-transition: 500ms cubic-bezier(0.8, 0.02, 0.18, 1); */
 			transition: var(--main-transition);
 		}
 
@@ -68,9 +64,7 @@
 		}
 
 		#main {
-			/* pointer-events: none; */
 			transition: var(--main-transition);
-			/* transition-delay: 10s; */
 			max-height: 100%;
 			margin: 0;
 			padding: 24px;
@@ -80,15 +74,11 @@
 			flex-direction: column;
 			align-items: center;
 			overflow-y: auto;
-			/* justify-content: center; */
 			flex-shrink: 0;
-			/* min-height: 100vh;
-			justify-content: center; */
 		}
 
 		.escaper {
 			background-color: #4448;
-			/* border: 2px solid white; */
 			width: 50px;
 			height: 50px;
 			border-radius: 25%;
@@ -116,11 +106,9 @@
 		.escaper:hover {
 			border: 3px solid white;
 			box-shadow: inset 0px 0px 6px 0px white;
-			/* transform: scale(1.1) !important; */
 		}
 
 		#main>* {
-			/* transition: 400ms cubic-bezier(0.26, 0.8, 0.29, 0.98); */
 			transition: var(--main-transition);
 			flex-shrink: 0;
 			overflow: hidden;
@@ -155,19 +143,14 @@
 		}
 
 		.app>.icon {
-			/* transition: none; */
 			position: absolute;
 			top: 0;
 			left: 0;
-			/* transform: translateX(-50%) translateY(-50%); */
 			margin: 0;
 			z-index: 50;
 			width: 56px;
 			height: 56px;
 			margin: 4px;
-			/* background-color: black;
-		border-top-right-radius: 50%;
-		border-bottom-right-radius: 50%; */
 		}
 
 		.darkener {
@@ -183,8 +166,6 @@
 		.content {
 			z-index: 20;
 			background-color: #0008;
-			/* width: 50%;
-		height: 100%; */
 			width: 400px;
 			height: 600px;
 			box-sizing: border-box;
@@ -218,15 +199,10 @@
 		}
 
 		.app:hover:not(.app:focus, .app-selected) {
-			/* transform: scale(1.2); */
 			width: 300px;
-			/* height: 96px; */
-			/* border-radius: 48px; */
 		}
 
-		/* #main:focus-within>*, */
 		#main.selection-within>* {
-			/* width: 0; */
 			height: 0;
 			margin: 0;
 			opacity: 0;
@@ -261,9 +237,6 @@
 			border-radius: 16px;
 			margin: 0 !important;
 			opacity: 1 !important;
-			/* width: 100vw !important;
-		height: 100vh !important;
-		border-radius: 0px; */
 		}
 
 		.app:focus>.icon,
@@ -330,9 +303,7 @@
 
 			.keepshowing .app:not(#welcome):focus .content,
 			.keepshowing .app-selected:not(#welcome) .content {
-				/* height: calc(100vh - 80px) !important; */
 				padding-top: 158px;
-				/* margin-top: 80px; */
 				box-sizing: border-box;
 			}
 
@@ -382,7 +353,6 @@
 		}
 
 		.testimonial>* {
-			/* text-align: center; */
 			width: 100%;
 		}
 
@@ -397,19 +367,6 @@
 			margin-top: 6px;
 			margin-bottom: 0;
 		}
-
-		/*
-		.testimonial:first-child {
-			font-style: italic;
-		}
-
-		.testimonial:nth-child(2) {
-			font-weight: bold;
-		} */
-
-		/* #main>h1 {
-		margin: 8px;
-	} */
 	</style>
 	<script>
 		let brks_elem = null;
@@ -471,24 +428,9 @@
 				<h1>Hi, I'm Cy.</h1>
 				<p>And this is my landing page. It's nice to meet you.</p>
 				<p>Press or tap <code>esc</code> to see my projects.</p>
-				<!-- <p>Press <code>tab</code> or <code>shift+tab</code> to move forward/backward.</p> -->
 				<p class="blurcompatibility">For a fancy blur effect, open this site in a Chromium-based browser, such
 					as Edge or Chrome.</p>
 				<p>You can click on the underlined titles of projects to see them live.</p>
-				<!-- <p>Find me on <a href="https://github.com/cyfinfaza">GitHub</a></p> -->
-				<!-- <h2>Find me on</h2>
-				<ul>
-					<li><a href="https://github.com/cyfinfaza">GitHub</a></li>
-				</ul> -->
-				<!-- <h2>See my...</h2>
-				<ul>
-					<li>
-						<a>Blog (coming soon!)</a>
-					</li>
-					<li>
-						<a href="https://www.youtube.com/channel/UCY7wuuS5KHP8HUwBpv5Hn2A/videos">YouTube</a>
-					</li>
-				</ul> -->
 			</div>
 		</div>
 		<h1>Featured Projects</h1>
@@ -533,20 +475,25 @@
 			<div class="content">
 				<h1>More Projects</h1>
 				<h2><a href="https://poptrig.cy2.me">PopTrig</a></h2>
-				<p>A trig practice game to help improve your consistency for trig pop quizzes in Mr. Boop's AP Calc AB class.</p>
+				<p>A trig practice game to help improve your consistency for trig pop quizzes in Mr. Boop's AP Calc AB
+					class.</p>
 				<h2><a href="https://ytdl.cy2.me">ytdl-web</a></h2>
 				<p>A web API and UI for downloading and embedding YouTube video and audio.</p>
 				<h2><a href="https://learn.cy2.me">courses</a></h2>
-				<p>An online learning platform, still in development, that I aim to use for a web development course.</p>
+				<p>An online learning platform, still in development, that I aim to use for a web development course.
+				</p>
 				<h2><a href="https://type.cy2.me">Type</a></h2>
 				<p>A typing test written in Svelte, that pulls samples from oracle.cy2.me.</p>
 				<h2><a href="https://anylyrics.cy2.me">AnyLyrics</a></h2>
-				<p>An AI-powered web scraper for fetching song lyrics that runs on IBM Functions and doesn't really work very well.</p>
+				<p>An AI-powered web scraper for fetching song lyrics that runs on IBM Functions and doesn't really work
+					very well.</p>
 				<h2><a href="https://browse.cy2.me">Cy2 Browse</a></h2>
 				<p>An in-browser proxy for easily accessing blocked websites, or accessing sites from a different IP.
-					Runs on replit, so it might have to wake up before it works properly. Recently added support for POST requests and cookies.</p>
+					Runs on Replit, so it might have to wake up before it works properly. Recently added support for
+					POST requests and cookies.</p>
 				<h2><a href="https://apcs2021.tk">APCS2021</a></h2>
-				<p>A compilation of all the 2021 Ridge APCS final projects. (freenom domain; may no longer be active)</p>
+				<p>A compilation of all the 2021 Ridge APCS final projects. (freenom domain; may no longer be active)
+				</p>
 				<h2><a href="https://playtools.cy2.me">PlayTools</a></h2>
 				<p>Playtools is an app that allows you to put YouTube videos in a container, which prompts users for
 					their name, so that you can track who viewed your video, for how long, and how many times.</p>
@@ -559,16 +506,16 @@
 				A random message from the oracle. Just for you. Reload for more, or GET <a
 					href="https://oracle.cy2.me/api">oracle.cy2.me/api</a> for an unformatted version you can use in
 				your apps.
-				<h2><a href="https://readybelu.ga">ReadyBeluga</a></h2>
+				<h2>ReadyBeluga</h2>
 				<p>One of my first projects, written in Python Flask. A simple URL shortener that lets you choose your
-					own custom path. This site is on a timer though... freenom...</p>
+					own custom path. (this site is no longer up due to freenom expiration)</p>
 				<h2><a href="https://connect4.cy2.me">Connect 4</a></h2>
 				<p>My first project with WebSockets. A simple Connect 4 game that's really easy to hack.</p>
-				<h2><a href="https://cycloudd.tk">CyCloud</a></h2>
+				<h2><a href="https://cycloudd.cy2.me">CyCloud</a></h2>
 				<p>A NextCloud server I set up for myself and my family.</p>
 				<h1>Projects I Contributed To</h1>
-				<h2><a href="https://emotes.ml">emotes.ml</a></h2>
-				<p>I made the homepage</p>
+				<h2><a href="https://github.com/cdknight/emotes">emotes.ml</a></h2>
+				<p>I made the homepage (this site is no longer up due to freenom expiration)</p>
 				<h2><a href="https://blackjack-apcs.vercel.app">APCS Final Project</a></h2>
 				<p>My 2021 APCS final project, that I worked on with a friend.</p>
 			</div>
@@ -617,10 +564,6 @@
 	<p style="font-size: 10px; position: fixed; right: 12px; bottom: 12px; text-align: right; margin: 0; z-index: 70;">
 		&copy;2021 Cy
 		Westbrook<br><a style="color: white;" href="credits.html">Credits</a></p>
-	<!-- <p
-		style="position: fixed; bottom: 16px; padding-inline: 8px; padding-block: 2px; background-color: black; border-radius: 6px;">
-		Cy's
-		Portfolio 2021</p> -->
 </body>
 <script>
 	let mousein = true;
@@ -639,7 +582,6 @@
 			document.querySelector('body').classList.add('keepshowing')
 			dofocus(elem)
 			brks_elem = elem;
-			// elem.addEventListener('change', () => document.querySelector('body').classList.remove('keepshowing'))
 		}
 	}
 	else {
